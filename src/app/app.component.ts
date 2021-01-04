@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Doctor} from './entity/doctor';
 
 @Component({
   selector: 'app-root',

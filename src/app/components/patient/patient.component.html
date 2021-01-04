@@ -1,0 +1,50 @@
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">  Patients Information</h1>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Department</th>
+          <th>email</th>
+          <th>Phone</th>
+          <th>New reminder</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor = "let pat of pats; index as index">
+          <th>{{index + 1}}</th>
+          <th>{{pat.fName}}</th>
+          <th>{{pat.lName}}</th>
+          <th>{{pat.age}}</th>
+          <th>{{pat.dept}}</th>
+          <th>{{pat.email}}</th>
+          <th>{{pat.phone}}</th>
+          <td><button (click)="newOrder($event, pat)" class="btn-block">Add</button></td>
+<!--               routerLink="/clinicsystem/patient/newOrder" [queryParams]="{'patId':pat.patId, 'fName':pat.fName, 'lName':pat.lName}"-->
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Department</th>
+          <th>email</th>
+          <th>Phone</th>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- /.container-fluid -->

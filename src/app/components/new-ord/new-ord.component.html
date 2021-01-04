@@ -1,0 +1,83 @@
+ <div class="text-center border border-light p-5">
+    <p class="h4 mb-4">Create Reminder</p>
+
+   <!-- Title -->
+   <div class="form-group">
+     <input type="text" id="defaultContactFormTitle" class="form-control mb-4" placeholder="Reminder Title" [(ngModel)]="title" required="required">
+   </div>
+
+    <!-- Name -->
+   <div class="form-group">
+    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name" disabled value="{{setName()}}">
+   </div>
+
+    <!-- Priority -->
+   <div class="form-group">
+      <select class="browser-default custom-select mb-4" [(ngModel)]="priority" required="required">
+        <option value="0" selected disabled>Choose priority option</option>
+        <option value="1">High</option>
+        <option value="2">Middle</option>
+        <option value="3">Low</option>
+      </select>
+   </div>
+
+   <!-- Start Time -->
+    <div class="form-group">
+      <div class="input-group">
+        <input id="date-input" type="text" class="form-control" aria-label="Date" required="required" placeholder="Start Time"
+               dlDateTimeInput
+               [dlDateTimeInputFilter]="startDateInputFilter"
+               [(ngModel)]="startDate">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary dropdown-toggle date-dropdown" type="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false"><i class="oi oi-calendar"></i></button>
+          <div class="dropdown-menu" (click)="keepDropDownOpen($event)">
+            <div style="width:360px;">
+              <dl-date-time-picker [(ngModel)]="startDate" (change)="startDateSelected($event)"
+                                   [selectFilter]="startDatePickerFilter"></dl-date-time-picker>
+            </div>
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          Please enter or choose a date and time after the current time.
+        </div>
+      </div>
+    </div>
+
+   <!-- End Time -->
+    <div class="form-group">
+      <div class="input-group">
+        <input id="endDate" type="text" class="form-control" aria-label="End date" required="required" placeholder="End Time"
+               dlDateTimeInput
+               [dlDateTimeInputFilter]="endDateInputFilter"
+               [(ngModel)]="endDate">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary dropdown-toggle end-date" type="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false"><i class="oi oi-calendar"></i></button>
+          <div class="dropdown-menu" (click)="keepDropDownOpen($event)">
+            <div style="width:360px;">
+              <dl-date-time-picker [(ngModel)]="endDate" (change)="endDateSelected($event)"
+                                   [selectFilter]="endDatePickerFilter"></dl-date-time-picker>
+            </div>
+          </div>
+        </div>
+        <div class="invalid-feedback">
+          Please enter or choose an end time after the start time.
+        </div>
+      </div>
+    </div>
+
+   <!-- Duration -->
+   <div class="form-group">
+     <input type="text" id="duration" class="form-control mb-4" placeholder="Duration" disabled value="{{setDuration()}}" >  <!--[(ngModel)]="duration"-->
+   </div>
+
+    <!-- Message -->
+    <div class="form-group">
+      <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Description" [(ngModel)]="desc"></textarea>
+    </div>
+
+    <!-- Send button -->
+    <button mdbBtn color="info" block="true" type="submit" (click)="createNewOrder()">Create</button>
+  </div>
+

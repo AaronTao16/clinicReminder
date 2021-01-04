@@ -1,0 +1,59 @@
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800"> Reminder Information</h1>
+<!-- Name -->
+<div class="form-group">
+  <label>Patient Name:  {{setName()}}</label>
+<!--  <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Name" disabled value="{{setName()}}">-->
+</div>
+
+<!--&lt;!&ndash; DataTales Example &ndash;&gt;-->
+<!--<div class="card shadow mb-4">-->
+
+<div>
+  <div style="display: block; width:80%; margin:auto;">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="mbarChartLabels"
+            [options]="barChartOptions"
+            [colors]="barChartColors"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+</div>
+<br>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="table" width="100%" cellspacing="0"
+             data-toggle="table"
+             data-flat="true"
+             data-search="true">
+        <thead>
+        <tr>
+          <th scope="col" >Id</th>
+          <th>Order Title</th>
+          <th>Create Time</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Finished Time</th>
+          <th>Priority</th>
+          <th>Statue</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor = "let patOrd of patOrds; index as index">
+          <th>{{index + 1}}</th>
+          <th>{{patOrd.ordTitle}}</th>
+          <th>{{patOrd.cTime | date:'MM/dd/YYYY hh:mm:ss'}}</th>
+          <th>{{patOrd.sTime | date:'MM/dd/YYYY hh:mm:ss'}}</th>
+          <th>{{patOrd.eTime | date:'MM/dd/YYYY hh:mm:ss'}}</th>
+          <th>{{patOrd.fTime | date:'MM/dd/YYYY hh:mm:ss'}}</th>
+          <th>{{patOrd.pro | priority}}</th>
+          <th style="color: darkred">Delay</th>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
